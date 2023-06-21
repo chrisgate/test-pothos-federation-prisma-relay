@@ -1,0 +1,34 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key", "@shareable", "@inaccessible", "@tag", "@provides", "@requires", "@external", "@extends", "@override"])
+
+type Comment implements Node
+  @key(fields: "id")
+{
+  id: ID!
+  body: String!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+scalar DateTime
+
+type Mutation {
+  createComment(userId: ID!, body: String!): Comment!
+}
+
+interface Node {
+  id: ID!
+}
+
+type Query {
+  comment(commentId: ID!): Comment
+}
+
+type User
+  @key(fields: "id")
+  @extends
+{
+  id: ID! @external
+  comments: [Comment!]!
+}

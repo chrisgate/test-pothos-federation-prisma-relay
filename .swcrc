@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "exclude": [".stories.tsx", ".test.tsx"],
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic"
+      }
+    },
+    "target": "es2019",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "module": {
+    "type": "commonjs"
+  }
+}
